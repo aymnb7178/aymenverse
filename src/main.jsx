@@ -11,11 +11,7 @@ import {
   ArrowUpRight,
   ArrowRight,
   ArrowUp,
-  Github,
-  Linkedin,
   Send,
-  Instagram,
-  Twitter,
   MapPin,
   GraduationCap,
   Briefcase,
@@ -34,6 +30,39 @@ import {
 } from 'lucide-react';
 import './styles.css';
 import { links, projects, filters, skillGroups, certifications, learningGoals, timeline, stats } from './data.js';
+
+// lucide-react v1 dropped brand/logo glyphs, so these social marks are
+// small hand-drawn SVGs sized the same as the surrounding lucide icons.
+function GithubIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.11 2.91.85.09-.67.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.84c.85 0 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.64 1.03 2.76 0 3.94-2.35 4.8-4.58 5.06.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" />
+    </svg>
+  );
+}
+function LinkedinIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M6.94 5a2 2 0 1 1-4-.01 2 2 0 0 1 4 .01ZM3.2 8.75h3.47V21H3.2V8.75Zm6.03 0h3.33v1.68h.05c.46-.88 1.6-1.8 3.3-1.8 3.53 0 4.18 2.32 4.18 5.34V21h-3.47v-5.47c0-1.3-.02-2.98-1.82-2.98-1.82 0-2.1 1.42-2.1 2.88V21H9.23V8.75Z" />
+    </svg>
+  );
+}
+function XIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M18.3 3h3.1l-6.77 7.74L22.5 21h-6.24l-4.89-6.4L5.78 21H2.67l7.24-8.27L2 3h6.4l4.42 5.85L18.3 3Zm-1.09 16.17h1.72L7.9 4.73H6.06l11.15 14.44Z" />
+    </svg>
+  );
+}
+function InstagramIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
 
 const ICONS = { Code2, BarChart3, Brain, Cloud, GraduationCap, Briefcase, Rocket };
 
@@ -323,11 +352,11 @@ function App() {
             </span>
           </button>
           <div className="socials">
-            <a href={links.github} target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={17} /></a>
-            <a href={links.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={17} /></a>
-            <a href={links.x} target="_blank" rel="noreferrer" aria-label="X"><Twitter size={17} /></a>
+            <a href={links.github} target="_blank" rel="noreferrer" aria-label="GitHub"><GithubIcon size={17} /></a>
+            <a href={links.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedinIcon size={17} /></a>
+            <a href={links.x} target="_blank" rel="noreferrer" aria-label="X"><XIcon size={17} /></a>
             <a href={links.telegram} target="_blank" rel="noreferrer" aria-label="Telegram"><Send size={17} /></a>
-            <a href={links.instagram} target="_blank" rel="noreferrer" aria-label="Instagram"><Instagram size={17} /></a>
+            <a href={links.instagram} target="_blank" rel="noreferrer" aria-label="Instagram"><InstagramIcon size={17} /></a>
           </div>
         </div>
         <div className="footer-bottom">
@@ -460,7 +489,7 @@ function WorkView({ t, lang, filter, setFilter, visibleProjects }) {
           <p>{t.work.bannerBody}</p>
         </div>
         <a className="button button-quiet" href={links.github} target="_blank" rel="noreferrer">
-          <Github size={16} /> {t.work.visitGithub}
+          <GithubIcon size={16} /> {t.work.visitGithub}
         </a>
       </div>
     </section>
@@ -576,10 +605,10 @@ function ContactView({ t, lang, onSubmit }) {
             <Mail size={18} /><div><span>{t.contact.email}</span><strong>{links.email}</strong></div>
           </a>
           <a className="contact-card" href={links.linkedin} target="_blank" rel="noreferrer">
-            <Linkedin size={18} /><div><span>{t.contact.linkedin}</span><strong>/in/aiman-al-erwi</strong></div>
+            <LinkedinIcon size={18} /><div><span>{t.contact.linkedin}</span><strong>/in/aiman-al-erwi</strong></div>
           </a>
           <a className="contact-card" href={links.github} target="_blank" rel="noreferrer">
-            <Github size={18} /><div><span>{t.contact.github}</span><strong>/aymnb7178</strong></div>
+            <GithubIcon size={18} /><div><span>{t.contact.github}</span><strong>/aymnb7178</strong></div>
           </a>
           <div className="contact-card">
             <MapPin size={18} /><div><span>{t.contact.location}</span><strong>{t.contact.locationValue}</strong></div>
